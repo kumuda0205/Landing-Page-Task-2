@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
+    <style>
+        :root{--accent:#f59e0b; --accent-2:#f97316; --muted:#9aa3a8; --bg:#ffffff; --card:#dff4bd; --container:1100px;}
+        *{box-sizing: border-box}
+        html,body{height: 100%;}
+        body{margin: 0; font-family: Inter,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #111827;background: var(--bg);
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+    }
+    .wrap{max-width: 1200px;margin: 0 auto;padding: 20px;}
+    header{display: flex;align-items: center;justify-content: space-between; padding: 18px 0;}
+    .brand{display: flex; align-items: center;gap: 12px;}
+    .logo{width: 36px; height: 36px;border-radius: 8px;background: linear-gradient(135deg,#667eea,#764ba2);display: flex;align-items: center;justify-content: center;color: white;font-weight: 700;}
+    .brand h1{font-size: 18px; margin: 0;color: var(--accent-2);}
+    .search.input{flex: 1;max-width: 480px;margin: 0 18px; position: relative;}
+    .search.input input{width: 100%; padding: 10px 14px;border-radius: 18px;border: 1px solid #eee;background-color: #fafafa;outline: none;}
+    nav{display: flex; gap: 18px;align-items: center;}
+    nav a{color: #111827;text-decoration: none;font-weight: 600;}
+    .btn{padding: 8px 14px; border-radius: 12px; background: var(--accent);color: white; font-weight: 700;}
+    .hero{
+        width: 100%;height: 520px;border-radius: 8px;overflow:hidden ;position:relative;margin: 8px 0 40px;
+        background-size: cover; background-position: center center;background-repeat: no-repeat;
+        box-shadow: 0 8px 30px rgba(16,24,40,0.12);
+    }
+    .hero::after{content: "";position: absolute;inset: 0;background: linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.25));}
+    .hero-inner{position: absolute;left: 50%;top: 16%;transform: translate(-50%);width: min(1000px,92%);z-index:2;text-align: center;color: white;}
+    .hero h2{font-size: 56px;line-height: 1; margin: 0 0 8px;font-weight: 800;text-shadow: 0 6px 30px rgba(0,0,0,0.35);}
+    .hero p.lead{margin: 0,0,18px;font-size: 16px;font-weight: 600;opacity: 0.95;}
+    .search-card{display: flex;gap: 18px;align-items: center;justify-content: space-between;background: rgba(255,255,255,0.92);color: #1f2937;padding: 18px;border-radius: 14px;box-shadow: 0 8px 30px rgba(16,24,40,0.08);}
+    .search-card .col{flex: 1;text-align: left;}
+    .search-card .col h4{margin: 0;color: var(--accent-2);font-weight: 700;}
+    .search-card .col p{margin: 4px 0 0;color: #6b7280;}
+    .search-card .btn-cta{background: var(--accent); color: white;padding: 10px 18px;border-radius: 24px;font-weight: 700;border: none;}
+    .why{padding: 40px 0;}
+    .why h3{font-size: 28px;margin: 0 0 22px;}
+    .features{display: grid; grid-template-columns: repeat(4,1fr);gap: 28px}
+    .feature{display: flex;flex-direction: column;gap: 8px;}
+    .feature .icon{width: 56;height: 56px;border-radius: 10px;display: flex;align-items: center;justify-content: center;background: linear-gradient(180deg,#fff,#fff);border-radius: 2px solid rgba(249,115,22,0.06);color: var(--accent-2);font-size: 22px;}
+    .feature h4{margin: 0;font-size: 16px;}
+    .feature p{margin: 0;color: #6b7280;font-size: 14px;}
+    .trending{padding: 30px 0;}
+    .trending h4{margin: 0 0 18px;}
+    .dots{display: flex;gap: 12px;align-items: center;}
+    .circle-list{display: flex;gap: 22px;align-items: center;}
+    .circle{width: 88px; height: 88px;border-radius: 999px;overflow: hidden;flex: 0 0 88px;display: flex;align-items: center;justify-content: center;box-shadow: 0 6px 20px rgba(16,24,40,0.08);}
+    .circle img{width: 100%;height: 100%;object-fit: cover;}
+    .circle p{margin: 8px 0 0;text-align: center;font-size: 14px;}
+    .promo {margin: 36px 0; border-radius: 8px;overflow: hidden;position: relative;height: 220px;background-size: cover ;background-position: center;color: white;}
+    .promo::after{content: "";position: absolute;inset: 0;background: linear-gradient(90deg,rgba(0,0,0,0.45),rgba(0,0,0,0.15));}
+    .promo .content{position: absolute;left: 42px;top: 36px;z-index: 2;}
+    .promo h4{margin: 0;font-size: 22px;}
+    .promo p{margin: 8px 0 0;}
+    .promo .book{margin-top: 14px;padding: 10px 18px;border-radius: 28px;background: var(--accent);font-weight: 700;border: none;}
+    footer{padding: 40px 0;color: #6b7280;}
+    @media (max-width:1000px){
+        .hero{height: 480px;}
+        .hero h2{font-size: 44px;}
+        .features{grid-template-columns: repeat(2,1fr);}
+        .circle{width:72px;height: 72px;flex: 0 0 72px;}
+    }
+    @media(max-width:700px){
+        header{padding: 12px 0;}
+        .search-input{display: none;}
+        .hero{height: 560px;}
+        .hero-inner{top: 12%;}
+        .hero h2{font-size: 34px;}
+        .search-card{flex-direction: column;align-items: stretch;}
+        .features{grid-template-columns: 1fr;}
+        .wrap{padding: 12px;}
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <div class="logo">K</div>
+                <h1>K's travels</h1>
+            </div>
+            <div class="search-input">
+                <input type="search" placeholder="search-card" aria-label="site search">
+            </div>
+            <nav>
+                <a href="#">Destinations</a>
+                <a href="#">Activities</a>
+                <a href="#">Sign-up</a>
+                <buttpn class="dtn">Login</buttpn>
+            </nav>
+        </header>
+    </div>
+    <section class="hero" style="background-image: url('nature.webp') ;">
+        <div class="hero-inner">
+            <h2>Your World of Joy!!</h2>
+            <p class="lead">From local escapes to far-flung adventures</p>
+            <div class="search-card" role="search" aria-label="Find tours">
+                <div class="col">
+                    <h4>Where?</h4>
+                    <p>Search destinations</p>
+                </div>
+                <div class="col">
+                    <h4>When?</h4>
+                    <p>May 2- June 27</p>
+                </div>
+                <div class="col" style="text-align: right;display: flex;flex-direction: column;align-items: flex-end;justify-content: center;">
+                    <label style="font-size: 12px;color: #6b7280;margin-bottom: 6px;">Tour Type</label>
+                    <button class="btn-cta">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="wrap">
+        <section class="why">
+            <h3>Why choose Tourz</h3>
+            <div class="features">
+                <div class="feature">
+                    <div class="icon">🎟️</div>
+                    <h4>Ultimate flexibility</h4>
+                    <p>You're in control, with free cancellation and payment options to satisfy any plan or budget.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🌟</div>
+                    <h4>Memorable experiences</h4>
+                    <p>Browse and book tours and activities so incredible, you'll want to tell your friends.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">💎</div>
+                    <h4>Quality at our core</h4>
+                    <p>High-quality standards. Millions of reviews. A tourz company.</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🏅</div>
+                    <h4>Award-winning support</h4>
+                    <p>New price? New plan? No problem. We're here to help, 24/7.</p>
+                </div>
+            </div>
+        </section>
+        <section class="trending">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h4>Trending destinations</h4>
+        <a href="#" style="color:#6b7280;text-decoration:none">See all</a>
+      </div>
+      <div style="height:18px"></div>
+      <div class="circle-list">
+        <div style="text-align:center">
+          <div class="circle"><img src="paris.webp" alt="Paris"></div>
+          <p>Paris</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="tokyo.jpg" alt="Tokyo"></div>
+          <p>Tokyo</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="bali.jpg" alt="Bali"></div>
+          <p>Bali</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="bangkok.jpg" alt="Bangkok"></div>
+          <p>Bangkok</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="singapore.webp" alt="Singapore"></div>
+          <p>Singapore</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="rome.jpeg" alt="Rome"></div>
+          <p>Rome</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="kenya.jpg" alt="Kenya"></div>
+          <p>Kenya</p>
+        </div>
+        <div style="text-align:center">
+          <div class="circle"><img src="tower-bridge-at-night1920x1080.png" alt="London"></div>
+          <p>London</p>
+        </div>
+      </div>
+    </section>
+    <section class="promo" style="background-image:url('switzerland-tour-packages-from-india.webp')">
+      <div class="content">
+        <h4>Grab up to <span style="color:var(--accent-2)">40% off</span> on your favorite Destination</h4>
+        <p>Limited time offer — save on popular packages.</p>
+        <button class="book">Book now</button>
+      </div>
+    </section>
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>K's travels</strong>
+          <div style="margin-top:8px;color:#6b7280">© 2025 K's travels. All rights reserved.</div>
+        </div>
+        <div style="color:#6b7280">Terms · Privacy · Help</div>
+      </div>
+    </footer>
+    </div>
+</body>
+
+</html>
